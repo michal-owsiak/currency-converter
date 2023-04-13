@@ -1,0 +1,106 @@
+.form__fieldset {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding-top: 20px;
+    background-color: white;
+}
+
+.form__labelText {
+    font-size: 13px;
+    font-weight: 500;
+    color: #5e5e5e;
+    padding: 15px;
+    padding-left: 40px;
+    max-width: 150px;
+    width: 100%;
+    display: inline-block;
+}
+
+.form__amountField {
+    color: #366bff;
+    background-color: white;
+    border: 0;
+    border-bottom: 2px solid #366bff;
+    padding: 13px 13px 13px 6px;
+    max-width: 260px;
+    font-size: 20px;
+    font-weight: 600;
+    outline: none;
+    margin: 5px;
+}
+
+.form__amountField:hover {
+    background-color: #f3f7ff;
+}
+
+.form__currencyField {
+    border: 1.5px solid #cccaca;
+    border-radius: 6px;
+    width: 100px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #4c4c4c;
+    background-color: white;
+    outline-color: #0051ff;
+    margin: 2px;
+}
+
+.form__currencyField:hover {
+    background-color: #f3f7ff;
+    border: 1.5px solid #0051ff;
+}
+
+.form__currencyRate {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 40px 0;
+    color: #266bff;
+    margin: 0;
+}
+
+.form__result {
+    padding: 10px 0 15px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+    color: #266bff;
+}
+
+.form__result--from {
+    font-weight: 300;
+    color: #5e5e5e;
+}
+
+.form__buttonsContainer {
+    padding: 0 0 18px;
+}
+
+.form__button {
+    display: block;
+    width: 70%;
+    height: 55px;
+    color: white;
+    border: 1.5px solid #0051ff;
+    border-radius: 50px;
+    background-color: #0051ff;
+    padding: 12px 36px;
+    font-weight: 600;
+    font-size: 15px;
+    margin: auto;
+}
+
+.form__button--reset {
+    color: #266bff;
+    background-color: white;
+    font-weight: 700;
+}
+
+.form__button:hover {
+    background-color: #003cbd;
+    border: 1.5px solid #003cbd;
+}
+
+.form__button--reset:hover {
+    color: white;
+}
