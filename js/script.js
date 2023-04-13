@@ -1,60 +1,61 @@
 {
-    const rateFrom = (currencyFrom, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY) => {
+    const rateFrom = (currencyFrom) => {
 
         switch (currencyFrom) {
             case "PLN":
-                return ratePLN;
+                return 1.00;
 
             case "EUR":
-                return rateEUR;
+                return 4.68;
 
             case "USD":
-                return rateUSD;
+                return 4.40;
 
             case "CHF":
-                return rateCHF;
+                return 4.78;
 
             case "GBP":
-                return rateGBP;
+                return 5.29;
 
             case "JPY":
-                return rateJPY;
+                return 0.033;
         }
     };
 
-    const rateTo = (currencyTo, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY) => {
+    const rateTo = (currencyTo) => {
 
         switch (currencyTo) {
             case "PLN":
-                return ratePLN;
+                return 1.00;
 
             case "EUR":
-                return rateEUR;
+                return 4.68;
 
             case "USD":
-                return rateUSD;
+                return 4.40;
 
             case "CHF":
-                return rateCHF;
+                return 4.78;
 
             case "GBP":
-                return rateGBP;
+                return 5.29;
 
             case "JPY":
-                return rateJPY;
+                return 0.033;
         }
     };
 
-    const calculateCurrency = (amount, currencyFrom, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY) => {
-        const rateFromValue = rateFrom(currencyFrom, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY)
-     
+    const calculateCurrency = (amount, currencyFrom) => {
+        
+        const rateFromValue = rateFrom(currencyFrom)
+
         return amount * rateFromValue;
     };
 
-    const calculateResult = (currencyFrom, amount, currencyTo, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY) => {
+    const calculateResult = (currencyFrom, currencyTo, amount) => {
 
-        const calculatedCurrency = calculateCurrency(amount, currencyFrom, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY);
-        const rateToValue = rateTo(currencyTo, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY);
+        const calculatedCurrency = calculateCurrency(amount, currencyFrom);
+        const rateToValue = rateTo(currencyTo);
 
         return calculatedCurrency / rateToValue;
     };
@@ -72,13 +73,6 @@
     const onFormSubmit = (event) => {
         event.preventDefault();
 
-        const ratePLN = 1.00;
-        const rateEUR = 4.68;
-        const rateUSD = 4.40;
-        const rateCHF = 4.78;
-        const rateGBP = 5.29;
-        const rateJPY = 0.033;
-
         const amountElement = document.querySelector(".js-form__amountField");
         const currencyFromElement = document.querySelector(".js-currencyFrom");
         const currencyToElement = document.querySelector(".js-currencyTo");
@@ -87,10 +81,10 @@
         const currencyFrom = currencyFromElement.value;
         const currencyTo = currencyToElement.value;
 
-        rateFrom(currencyFrom, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY);
-        rateTo(currencyFrom, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY);
-        calculateCurrency(amount, currencyFrom, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY);
-        const result = calculateResult(currencyFrom, amount, currencyTo, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY);
+        rateFrom(currencyFrom);
+        rateTo(currencyTo);
+        calculateCurrency(amount, currencyFrom);
+        const result = calculateResult(currencyFrom, currencyTo, amount);
 
         updateResultText(amount, result, currencyFrom, currencyTo);
     };
