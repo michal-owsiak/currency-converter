@@ -45,6 +45,35 @@
         }
     };
 
+    const calculateCurrencyRate = (currencyFrom, currencyTo) => {
+
+        const rateFromValue = PLNRateFrom(currencyFrom);
+        const rateToValue = PLNRateTo(currencyTo);
+
+        return rateFromValue / rateToValue;
+    };
+
+    const updateCurrencyRateText = (currencyRate, currencyFrom, currencyTo) => {
+
+        const currencyFixedElement = document.querySelector(".js-form__currencyRate--from");
+        const currencyExchangedElement = document.querySelector(".js-form__currencyRate--to");
+
+        currencyFixedElement.innerText = `1 ${currencyFrom}`;
+        currencyExchangedElement.innerText = `${currencyRate.toFixed(2)} ${currencyTo}`;
+    };
+
+    const onCurrenciesInput = () => {
+
+        const currencyFromElement = document.querySelector(".js-currencyFrom");
+        const currencyToElement = document.querySelector(".js-currencyTo");
+    
+        const currencyFrom = currencyFromElement.value;
+        const currencyTo = currencyToElement.value;
+        
+        const currencyRate = calculateCurrencyRate(currencyFrom, currencyTo);
+        updateCurrencyRateText(currencyRate, currencyFrom, currencyTo);
+    };
+
     const calculatePLN = (amount, currencyFrom) => {
 
         const PLNRateFromValue = PLNRateFrom(currencyFrom)
@@ -90,7 +119,8 @@
 
     const init = () => {
         const formElement = document.querySelector(".js-form");
-
+        
+        formElement.addEventListener("input", onCurrenciesInput);
         formElement.addEventListener("submit", onFormSubmit);
     };
 
