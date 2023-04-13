@@ -1,64 +1,62 @@
 {
-    const calculateCurrency = (currencyFrom, amount) => {
-
-        const ratePLN = 1.00;
-        const rateEUR = 4.68;
-        const rateUSD = 4.40;
-        const rateCHF = 4.78;
-        const rateGBP = 5.29;
-        const rateJPY = 0.033;
+    const rateFrom = (currencyFrom, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY) => {
 
         switch (currencyFrom) {
             case "PLN":
-                return amount * ratePLN;
+                return ratePLN;
 
             case "EUR":
-                return amount * rateEUR;
+                return rateEUR;
 
             case "USD":
-                return amount * rateUSD;
+                return rateUSD;
 
             case "CHF":
-                return amount * rateCHF;
+                return rateCHF;
 
             case "GBP":
-                return amount * rateGBP;
+                return rateGBP;
 
             case "JPY":
-                return amount * rateJPY;
+                return rateJPY;
         }
     };
 
-    const calculateResult = (currencyTo, currencyFrom, amount) => {
-
-        const ratePLN = 1.00;
-        const rateEUR = 4.68;
-        const rateUSD = 4.40;
-        const rateCHF = 4.78;
-        const rateGBP = 5.29;
-        const rateJPY = 0.033;
-
-        const calculatedCurrency = calculateCurrency(currencyFrom, amount);
+    const rateTo = (currencyTo, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY) => {
 
         switch (currencyTo) {
             case "PLN":
-                return calculatedCurrency / ratePLN;
+                return ratePLN;
 
             case "EUR":
-                return calculatedCurrency / rateEUR;
+                return rateEUR;
 
             case "USD":
-                return calculatedCurrency / rateUSD;
+                return rateUSD;
 
             case "CHF":
-                return calculatedCurrency / rateCHF;
+                return rateCHF;
 
             case "GBP":
-                return calculatedCurrency / rateGBP;
+                return rateGBP;
 
             case "JPY":
-                return calculatedCurrency / rateJPY;
+                return rateJPY;
         }
+    };
+
+    const calculateCurrency = (amount, currencyFrom, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY) => {
+        const rateFromValue = rateFrom(currencyFrom, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY)
+     
+        return amount * rateFromValue;
+    };
+
+    const calculateResult = (currencyFrom, amount, currencyTo, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY) => {
+
+        const calculatedCurrency = calculateCurrency(amount, currencyFrom, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY);
+        const rateToValue = rateTo(currencyTo, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY);
+
+        return calculatedCurrency / rateToValue;
     };
 
     const updateResultText = (amount, result, currencyFrom, currencyTo) => {
@@ -74,6 +72,13 @@
     const onFormSubmit = (event) => {
         event.preventDefault();
 
+        const ratePLN = 1.00;
+        const rateEUR = 4.68;
+        const rateUSD = 4.40;
+        const rateCHF = 4.78;
+        const rateGBP = 5.29;
+        const rateJPY = 0.033;
+
         const amountElement = document.querySelector(".js-form__amountField");
         const currencyFromElement = document.querySelector(".js-currencyFrom");
         const currencyToElement = document.querySelector(".js-currencyTo");
@@ -82,8 +87,10 @@
         const currencyFrom = currencyFromElement.value;
         const currencyTo = currencyToElement.value;
 
-        calculateCurrency(currencyTo, currencyFrom, amount);
-        const result = calculateResult(currencyTo, currencyFrom, amount);
+        rateFrom(currencyFrom, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY);
+        rateTo(currencyFrom, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY);
+        calculateCurrency(amount, currencyFrom, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY);
+        const result = calculateResult(currencyFrom, amount, currencyTo, ratePLN, rateEUR, rateUSD, rateCHF, rateGBP, rateJPY);
 
         updateResultText(amount, result, currencyFrom, currencyTo);
     };
