@@ -6,19 +6,19 @@
                 return 1.00;
 
             case "EUR":
-                return 4.68;
+                return 4.64;
 
             case "USD":
-                return 4.40;
+                return 4.20;
 
             case "CHF":
-                return 4.78;
+                return 4.72;
 
             case "GBP":
-                return 5.29;
+                return 5.26;
 
             case "JPY":
-                return 0.033;
+                return 0.032;
         }
     };
 
@@ -29,19 +29,19 @@
                 return 1.00;
 
             case "EUR":
-                return 4.68;
+                return 4.64;
 
             case "USD":
-                return 4.40;
+                return 4.20;
 
             case "CHF":
-                return 4.78;
+                return 4.72;
 
             case "GBP":
-                return 5.29;
+                return 5.26;
 
             case "JPY":
-                return 0.033;
+                return 0.032;
         }
     };
 
