@@ -1,159 +1,99 @@
-const formElement = document.querySelector(".js-form");
-const amountElement = document.querySelector(".js-form__amountField");
-const currencyFromElement = document.querySelector(".js-currencyFrom");
-const currencyToElement = document.querySelector(".js-currencyTo");
-const resultFromElement = document.querySelector(".js-form__result--from");
-const resultToElement = document.querySelector(".js-form__result--to");
-const currencyFixedElement = document.querySelector(".js-form__currencyRate--from");
-const currencyExchangedElement = document.querySelector(".js-form__currencyRate--to");
+{
+    const calculateCurrency = (currencyFrom, amount) => {
 
-const ratePLN = 1.00;
-const rateEUR = 4.68;
-const rateUSD = 4.40;
-const rateCHF = 4.78;
-const rateGBP = 5.29;
-const rateJPY = 0.033;
+        const ratePLN = 1.00;
+        const rateEUR = 4.68;
+        const rateUSD = 4.40;
+        const rateCHF = 4.78;
+        const rateGBP = 5.29;
+        const rateJPY = 0.033;
 
-const initialConversion = () => {
+        switch (currencyFrom) {
+            case "PLN":
+                return amount * ratePLN;
 
-    const currencyFrom = currencyFromElement.value;
-    const currencyTo = currencyToElement.value;
+            case "EUR":
+                return amount * rateEUR;
 
-    switch (currencyFrom) {
-        case "PLN":
-            rate = ratePLN;
-            break;
+            case "USD":
+                return amount * rateUSD;
 
-        case "EUR":
-            rate = rateEUR;
-            break;
+            case "CHF":
+                return amount * rateCHF;
 
-        case "USD":
-            rate = rateUSD;
-            break;
+            case "GBP":
+                return amount * rateGBP;
 
-        case "CHF":
-            rate = rateCHF;
-            break;
+            case "JPY":
+                return amount * rateJPY;
+        }
+    };
 
-        case "GBP":
-            rate = rateGBP;
-            break;
+    const calculateResult = (currencyTo, currencyFrom, amount) => {
 
-        case "JPY":
-            rate = rateJPY;
-            break;
+        const ratePLN = 1.00;
+        const rateEUR = 4.68;
+        const rateUSD = 4.40;
+        const rateCHF = 4.78;
+        const rateGBP = 5.29;
+        const rateJPY = 0.033;
 
-    }
+        const calculatedCurrency = calculateCurrency(currencyFrom, amount);
 
-    switch (currencyTo) {
-        case "PLN":
-            result = rate / ratePLN;
-            break;
+        switch (currencyTo) {
+            case "PLN":
+                return calculatedCurrency / ratePLN;
 
-        case "EUR":
-            result = rate / rateEUR;
-            break;
+            case "EUR":
+                return calculatedCurrency / rateEUR;
 
-        case "USD":
-            result = rate / rateUSD;
-            break;
+            case "USD":
+                return calculatedCurrency / rateUSD;
 
-        case "CHF":
-            result = rate / rateCHF;
-            break;
+            case "CHF":
+                return calculatedCurrency / rateCHF;
 
-        case "GBP":
-            result = rate / rateGBP;
-            break;
+            case "GBP":
+                return calculatedCurrency / rateGBP;
 
-        case "JPY":
-            result = rate / rateJPY;
-            break;
+            case "JPY":
+                return calculatedCurrency / rateJPY;
+        }
+    };
 
-    }
+    const updateResultText = (amount, result, currencyFrom, currencyTo) => {
 
-    currencyFixedElement.innerText = `1 ${currencyFromElement.value}`;
-    currencyExchangedElement.innerText = `${result.toFixed(2)} ${currencyToElement.value}`;
+        const resultFromElement = document.querySelector(".js-form__result--from");
+        const resultToElement = document.querySelector(".js-form__result--to");
 
-}
+        resultFromElement.innerText = `${amount} ${currencyFrom} = `;
+        resultToElement.innerText = `${result.toFixed(2)} ${currencyTo}`;
 
-formElement.addEventListener("input", initialConversion);
+    };
 
-const calculate = (event) => {
-    event.preventDefault();
+    const onFormSubmit = (event) => {
+        event.preventDefault();
 
-    const amount = amountElement.value;
-    const currencyFrom = currencyFromElement.value;
-    const currencyTo = currencyToElement.value;
-    let result = resultToElement.value;
+        const amountElement = document.querySelector(".js-form__amountField");
+        const currencyFromElement = document.querySelector(".js-currencyFrom");
+        const currencyToElement = document.querySelector(".js-currencyTo");
 
-    switch (currencyFrom) {
-        case "PLN":
-            rate = amount * ratePLN;
-            break;
+        const amount = amountElement.value;
+        const currencyFrom = currencyFromElement.value;
+        const currencyTo = currencyToElement.value;
 
-        case "EUR":
-            rate = amount * rateEUR;
-            break;
+        calculateCurrency(currencyTo, currencyFrom, amount);
+        const result = calculateResult(currencyTo, currencyFrom, amount);
 
-        case "USD":
-            rate = amount * rateUSD;
-            break;
+        updateResultText(amount, result, currencyFrom, currencyTo);
+    };
 
-        case "CHF":
-            rate = amount * rateCHF;
-            break;
+    const init = () => {
+        const formElement = document.querySelector(".js-form");
 
-        case "GBP":
-            rate = amount * rateGBP;
-            break;
+        formElement.addEventListener("submit", onFormSubmit);
+    };
 
-        case "JPY":
-            rate = amount * rateJPY;
-            break;
-
-    }
-
-    switch (currencyTo) {
-        case "PLN":
-            result = rate / ratePLN;
-            break;
-
-        case "EUR":
-            result = rate / rateEUR;
-            break;
-
-        case "USD":
-            result = rate / rateUSD;
-            break;
-
-        case "CHF":
-            result = rate / rateCHF;
-            break;
-
-        case "GBP":
-            result = rate / rateGBP;
-            break;
-
-        case "JPY":
-            result = rate / rateJPY;
-            break;
-
-    }
-
-    resultFromElement.innerText = `${amount} ${currencyFromElement.value} = `;
-    resultToElement.innerText = `${result.toFixed(2)} ${currencyToElement.value}`;
+    init();
 
 }
-
-formElement.addEventListener("submit", calculate);
-
-const reset = () => {
-    resultFromElement.innerText = "0.00";
-    resultToElement.innerText = "";
-    currencyFixedElement.innerText = "1 PLN";
-    currencyExchangedElement.innerText = "0.21 EUR";
-}
-
-formElement.addEventListener("reset", reset);
