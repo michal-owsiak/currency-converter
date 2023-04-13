@@ -126,7 +126,7 @@
         resultFromElement.innerText = "0.00";
         resultToElement.innerText = "";
         currencyFixedElement.innerText = "1 PLN";
-        currencyExchangedElement.innerText = "0.21 EUR";
+        currencyExchangedElement.innerText = "0.22 EUR";
     }
 
     const init = () => {
