@@ -109,11 +109,9 @@
         const amount = amountElement.value;
         const currencyFrom = currencyFromElement.value;
         const currencyTo = currencyToElement.value;
-
-        PLNRateFrom(currencyFrom);
-        PLNRateTo(currencyTo);
-        calculatePLN(amount, currencyFrom);
+        
         const result = calculateResult(currencyFrom, currencyTo, amount);
+        
         updateResultText(amount, result, currencyFrom, currencyTo);
     };
 
