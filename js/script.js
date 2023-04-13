@@ -1,5 +1,5 @@
 {
-    const rateFrom = (currencyFrom) => {
+    const PLNRateFrom = (currencyFrom) => {
 
         switch (currencyFrom) {
             case "PLN":
@@ -22,7 +22,7 @@
         }
     };
 
-    const rateTo = (currencyTo) => {
+    const PLNRateTo = (currencyTo) => {
 
         switch (currencyTo) {
             case "PLN":
@@ -45,19 +45,19 @@
         }
     };
 
-    const calculateCurrency = (amount, currencyFrom) => {
-        
-        const rateFromValue = rateFrom(currencyFrom)
+    const calculatePLN = (amount, currencyFrom) => {
 
-        return amount * rateFromValue;
+        const PLNRateFromValue = PLNRateFrom(currencyFrom)
+
+        return amount * PLNRateFromValue;
     };
 
     const calculateResult = (currencyFrom, currencyTo, amount) => {
 
-        const calculatedCurrency = calculateCurrency(amount, currencyFrom);
-        const rateToValue = rateTo(currencyTo);
+        const calculatedPLN = calculatePLN(amount, currencyFrom);
+        const PLNRateToValue = PLNRateTo(currencyTo);
 
-        return calculatedCurrency / rateToValue;
+        return calculatedPLN / PLNRateToValue;
     };
 
     const updateResultText = (amount, result, currencyFrom, currencyTo) => {
@@ -81,11 +81,10 @@
         const currencyFrom = currencyFromElement.value;
         const currencyTo = currencyToElement.value;
 
-        rateFrom(currencyFrom);
-        rateTo(currencyTo);
-        calculateCurrency(amount, currencyFrom);
+        PLNRateFrom(currencyFrom);
+        PLNRateTo(currencyTo);
+        calculatePLN(amount, currencyFrom);
         const result = calculateResult(currencyFrom, currencyTo, amount);
-
         updateResultText(amount, result, currencyFrom, currencyTo);
     };
 
@@ -96,5 +95,4 @@
     };
 
     init();
-
 }
