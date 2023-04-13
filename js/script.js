@@ -127,7 +127,7 @@
         resultToElement.innerText = "";
         currencyFixedElement.innerText = "1 PLN";
         currencyExchangedElement.innerText = "0.22 EUR";
-    }
+    };
 
     const init = () => {
         const formElement = document.querySelector(".js-form");
