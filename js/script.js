@@ -117,11 +117,26 @@
         updateResultText(amount, result, currencyFrom, currencyTo);
     };
 
+    const reset = () => {
+
+        const currencyFixedElement = document.querySelector(".js-form__currencyRate--from");
+        const currencyExchangedElement = document.querySelector(".js-form__currencyRate--to");
+
+        const resultFromElement = document.querySelector(".js-form__result--from");
+        const resultToElement = document.querySelector(".js-form__result--to");
+
+        resultFromElement.innerText = "0.00";
+        resultToElement.innerText = "";
+        currencyFixedElement.innerText = "1 PLN";
+        currencyExchangedElement.innerText = "0.21 EUR";
+    }
+
     const init = () => {
         const formElement = document.querySelector(".js-form");
         
         formElement.addEventListener("input", onCurrenciesInput);
         formElement.addEventListener("submit", onFormSubmit);
+        formElement.addEventListener("reset", reset);
     };
 
     init();
