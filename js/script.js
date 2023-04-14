@@ -115,7 +115,7 @@
         updateResultText(amount, result, currencyFrom, currencyTo);
     };
 
-    const reset = () => {
+    const onResetButtonClick = () => {
 
         const currencyFixedElement = document.querySelector(".js-form__currencyRate--from");
         const currencyExchangedElement = document.querySelector(".js-form__currencyRate--to");
@@ -134,7 +134,7 @@
         
         formElement.addEventListener("input", onCurrenciesInput);
         formElement.addEventListener("submit", onFormSubmit);
-        formElement.addEventListener("reset", reset);
+        formElement.addEventListener("reset", onResetButtonClick);
     };
 
     init();
