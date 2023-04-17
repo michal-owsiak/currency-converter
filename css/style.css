@@ -12,13 +12,13 @@ html {
     font-weight: 500;
     margin: auto;
     width: 90%;
-    background: hsl(220, 100%, 50%);
-    background: linear-gradient(90deg, rgba(0,86,255,1) 0%, rgba(0,138,233,1) 100%);
+    background-image: url("../images/background.png");
+    background-size: cover;
     transform: scale(0.9);
 }
 
 .header {
-    width: 400px;
+    max-width: 400px;
     font-size: 42px;
     text-align: center;
     font-weight: 600;
