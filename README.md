@@ -12,7 +12,7 @@ My first simple application that can convert values into different currencies. C
  - CSS
  - JS
  - BEM convention
- ## Ciurrencies
+ ## Currencies
 
  - PLN
  - EUR
