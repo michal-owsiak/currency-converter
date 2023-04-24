@@ -49,8 +49,8 @@
     };
 
     const updateCurrencyRateText = (currencyRate, currencyFrom, currencyTo) => {
-        const currencyFixedElement = document.querySelector(".js-form__currencyRate--from");
-        const currencyExchangedElement = document.querySelector(".js-form__currencyRate--to");
+        const currencyFixedElement = document.querySelector(".js-currencyFixed");
+        const currencyExchangedElement = document.querySelector(".js-currencyExchanged");
 
         currencyFixedElement.innerText = `1 ${currencyFrom}`;
         currencyExchangedElement.innerText = `${currencyRate.toFixed(2)} ${currencyTo}`;
@@ -81,8 +81,8 @@
     };
 
     const updateResultText = (amount, result, currencyFrom, currencyTo) => {
-        const resultFromElement = document.querySelector(".js-form__result--from");
-        const resultToElement = document.querySelector(".js-form__result--to");
+        const resultFromElement = document.querySelector(".js-resultFrom");
+        const resultToElement = document.querySelector(".js-resultTo");
 
         resultFromElement.innerText = `${amount} ${currencyFrom} = `;
         resultToElement.innerText = `${result.toFixed(2)} ${currencyTo}`;
@@ -90,7 +90,7 @@
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        const amountElement = document.querySelector(".js-form__amountField");
+        const amountElement = document.querySelector(".js-amountElement");
         const currencyFromElement = document.querySelector(".js-currencyFrom");
         const currencyToElement = document.querySelector(".js-currencyTo");
 
@@ -104,11 +104,11 @@
     };
 
     const onResetButtonClick = () => {
-        const currencyFixedElement = document.querySelector(".js-form__currencyRate--from");
-        const currencyExchangedElement = document.querySelector(".js-form__currencyRate--to");
+        const currencyFixedElement = document.querySelector(".js-currencyFixed");
+        const currencyExchangedElement = document.querySelector(".js-currencyExchanged");
 
-        const resultFromElement = document.querySelector(".js-form__result--from");
-        const resultToElement = document.querySelector(".js-form__result--to");
+        const resultFromElement = document.querySelector(".js-resultFrom");
+        const resultToElement = document.querySelector(".js-resultTo");
 
         resultFromElement.innerText = "0.00";
         resultToElement.innerText = "";
