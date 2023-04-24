@@ -1,6 +1,5 @@
 {
-    const PLNRateFrom = (currencyFrom) => {
-
+    const getCurrencyRate = (currencyFrom, currencyTo) => {
         switch (currencyFrom) {
             case "PLN":
                 return 1.00;
@@ -19,10 +18,7 @@
 
             case "JPY":
                 return 0.032;
-        }
-    };
-
-    const PLNRateTo = (currencyTo) => {
+        };
 
         switch (currencyTo) {
             case "PLN":
@@ -46,15 +42,13 @@
     };
 
     const calculateCurrencyRate = (currencyFrom, currencyTo) => {
-
-        const rateFromValue = PLNRateFrom(currencyFrom);
-        const rateToValue = PLNRateTo(currencyTo);
+        const rateFromValue = getCurrencyRate(currencyFrom);
+        const rateToValue = getCurrencyRate(currencyTo);
 
         return rateFromValue / rateToValue;
     };
 
     const updateCurrencyRateText = (currencyRate, currencyFrom, currencyTo) => {
-
         const currencyFixedElement = document.querySelector(".js-form__currencyRate--from");
         const currencyExchangedElement = document.querySelector(".js-form__currencyRate--to");
 
@@ -63,45 +57,39 @@
     };
 
     const onCurrenciesInput = () => {
-
         const currencyFromElement = document.querySelector(".js-currencyFrom");
         const currencyToElement = document.querySelector(".js-currencyTo");
-    
+
         const currencyFrom = currencyFromElement.value;
         const currencyTo = currencyToElement.value;
-        
+
         const currencyRate = calculateCurrencyRate(currencyFrom, currencyTo);
         updateCurrencyRateText(currencyRate, currencyFrom, currencyTo);
     };
 
     const calculatePLN = (amount, currencyFrom) => {
+        const currencyRate = getCurrencyRate(currencyFrom)
 
-        const PLNRateFromValue = PLNRateFrom(currencyFrom)
-
-        return amount * PLNRateFromValue;
+        return amount * currencyRate;
     };
 
     const calculateResult = (currencyFrom, currencyTo, amount) => {
-
         const calculatedPLN = calculatePLN(amount, currencyFrom);
-        const PLNRateToValue = PLNRateTo(currencyTo);
+        const currencyRate = getCurrencyRate(currencyTo);
 
-        return calculatedPLN / PLNRateToValue;
+        return calculatedPLN / currencyRate;
     };
 
     const updateResultText = (amount, result, currencyFrom, currencyTo) => {
-
         const resultFromElement = document.querySelector(".js-form__result--from");
         const resultToElement = document.querySelector(".js-form__result--to");
 
         resultFromElement.innerText = `${amount} ${currencyFrom} = `;
         resultToElement.innerText = `${result.toFixed(2)} ${currencyTo}`;
-
     };
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-
         const amountElement = document.querySelector(".js-form__amountField");
         const currencyFromElement = document.querySelector(".js-currencyFrom");
         const currencyToElement = document.querySelector(".js-currencyTo");
@@ -109,14 +97,13 @@
         const amount = amountElement.value;
         const currencyFrom = currencyFromElement.value;
         const currencyTo = currencyToElement.value;
-        
+
         const result = calculateResult(currencyFrom, currencyTo, amount);
-        
+
         updateResultText(amount, result, currencyFrom, currencyTo);
     };
 
     const onResetButtonClick = () => {
-
         const currencyFixedElement = document.querySelector(".js-form__currencyRate--from");
         const currencyExchangedElement = document.querySelector(".js-form__currencyRate--to");
 
@@ -131,7 +118,7 @@
 
     const init = () => {
         const formElement = document.querySelector(".js-form");
-        
+
         formElement.addEventListener("input", onCurrenciesInput);
         formElement.addEventListener("submit", onFormSubmit);
         formElement.addEventListener("reset", onResetButtonClick);
