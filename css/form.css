@@ -1,8 +1,9 @@
 .form__fieldset {
-    border: 1px solid white;
+    border: 1px solid #ededf7;
     border-radius: 10px;
     padding-top: 20px;
-    background-color: white;
+    background-color: hsl(240, 38%, 98%);
+    opacity: 98%;
 }
 
 .form__labelText {
@@ -17,10 +18,10 @@
 }
 
 .form__amountField {
-    color: #366bff;
-    background-color: white;
+    background-color: hsl(240, 38%, 98%);
+    color: hsl(244, 90%, 68%);
     border: 0;
-    border-bottom: 2px solid #366bff;
+    border-bottom: 2px solid hsl(240, 38%, 50%);
     padding: 13px 13px 13px 6px;
     max-width: 260px;
     font-size: 20px;
@@ -30,26 +31,26 @@
 }
 
 .form__amountField:hover {
-    background-color: #f3f7ff;
+    background-color: hsl(240, 38%, 90%);
     transition: background-color 0.5s ease;
 }
 
 .form__currencyField {
-    border: 1.5px solid #cccaca;
+    border: 1.5px solid hsl(240, 38%, 80%);
     border-radius: 6px;
     width: 100px;
     padding: 12px;
     font-size: 14px;
     font-weight: 700;
-    color: #4c4c4c;
-    background-color: white;
-    outline-color: #0051ff;
+    color: #4d4d4d;
+    background-color: hsl(240, 38%, 98%);
+    outline-color: hsl(240, 38%, 50%);
     margin: 2px;
 }
 
 .form__currencyField:hover {
-    background-color: #f3f7ff;
-    border: 1.5px solid #0051ff;
+    background-color: hsl(240, 38%, 90%);
+    border: 1.5px solid hsl(240, 38%, 50%);
     transition: all 0.5s ease;
 }
 
@@ -57,7 +58,7 @@
     font-size: 16px;
     font-weight: 600;
     padding: 12px 40px 0;
-    color: #266bff;
+    color: hsl(244, 90%, 68%);
     margin: 0;
 }
 
@@ -66,7 +67,7 @@
     text-align: center;
     font-size: 25px;
     font-weight: 700;
-    color: #266bff;
+    color: hsl(244, 90%, 68%);
 }
 
 .form__result--from {
@@ -83,9 +84,9 @@
     width: 70%;
     height: 55px;
     color: white;
-    border: 1.5px solid #0051ff;
+    border: 1.5px solid hsl(240, 39%, 45%);
     border-radius: 50px;
-    background-color: #0051ff;
+    background-color: hsl(240, 39%, 45%);
     padding: 12px 36px;
     font-weight: 600;
     font-size: 15px;
@@ -93,16 +94,16 @@
 }
 
 .form__button--reset {
-    color: #266bff;
-    background-color: white;
+    color: hsl(240, 39%, 45%);
+    background-color: hsl(240, 38%, 98%);
     font-weight: 700;
     transition: all 0.5s ease;
 }
 
 .form__button:hover {
-    background-color: #003cbd;
+    background-color: hsl(240, 39%, 45%);
     transition: all 0.5s ease;
-    border: 1.5px solid #003cbd;
+    border: 1.5px solid hsl(240, 39%, 45%);
 }
 
 .form__button--reset:hover {

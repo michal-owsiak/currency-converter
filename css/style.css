@@ -12,8 +12,11 @@ html {
     font-weight: 500;
     margin: auto;
     width: 90%;
-    background-image: url("../images/background.png");
-    background-size: cover;
+    background-color:hsl(240, 39%, 45%);
+    background-image: url("../images/bck.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
     transform: scale(0.9);
 }
 
@@ -37,5 +40,5 @@ html {
     color: white;
     font-weight: 500;
     font-size: 12px;
-    padding: 0 0 40px;
+    padding: 30px 0 40px;
 }
