@@ -101,9 +101,9 @@
 }
 
 .form__button:hover {
-    background-color: hsl(240, 39%, 45%);
+    background-color: hsl(240, 39%, 35%);
     transition: all 0.5s ease;
-    border: 1.5px solid hsl(240, 39%, 45%);
+    border: 1.5px solid hsl(240, 39%, 35%);
 }
 
 .form__button--reset:hover {
